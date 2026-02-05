@@ -2,24 +2,22 @@
 
 ## Purpose
 
-This is a **deliberately vulnerable and outdated** Go application created for demonstrating CI/CD security scanning tools. This project contains intentional security issues and outdated dependencies for testing purposes.
+This is a simple Go "Hello World" application for demonstrating Konflux CI/CD pipelines.
 
-**WARNING**: This application contains known security vulnerabilities and should NEVER be used in production!
+> **Note**: This is the `fixed-vulnerabilities` branch with up-to-date dependencies. The `main` branch intentionally contains outdated/vulnerable dependencies for security scanning demos.
 
-## What's Intentionally Outdated
+## Current Versions
 
 ### Go Version
-- Using **Go 1.15** (released August 2020, ~4-5 years old)
-- Missing security patches and modern language features
+- **Go 1.22** - Current stable release
 
-### Dependencies with Known Vulnerabilities
-- **github.com/gin-gonic/gin v1.6.3** (2020) - Older version with potential security issues
-- **github.com/sirupsen/logrus v1.7.0** (2020) - Outdated logging library
+### Dependencies
+- **github.com/gin-gonic/gin v1.10.0** - Latest Gin web framework
+- **github.com/sirupsen/logrus v1.9.3** - Latest logrus logging library
 
 ### Docker Base Images
-- **golang:1.15-alpine3.12** - Outdated build image from 2020
-- **alpine:3.12** - Outdated runtime image from May 2020
-- Both contain known CVEs and missing security updates
+- **golang:1.22-alpine** - Current Go build image
+- **alpine:3.21** - Current Alpine runtime image
 
 ## Application Details
 
@@ -54,15 +52,6 @@ docker run -p 8080:8080 konflux-demo:latest
 # Test the endpoint
 curl http://localhost:8080
 ```
-
-## Expected CI Tool Findings
-
-Your CI security scanning tool should detect:
-1. Outdated Go version (1.15)
-2. Vulnerable dependencies in go.mod
-3. Outdated container base images
-4. Known CVEs in both dependencies and base images
-5. Missing security patches
 
 ## License
 

@@ -1,5 +1,5 @@
-# Build stage - using outdated golang:1.15 (released August 2020)
-FROM golang:1.15-alpine3.12 AS builder
+# Build stage - using current Go 1.22
+FROM golang:1.22-alpine AS builder
 
 WORKDIR /app
 
@@ -15,8 +15,8 @@ COPY . .
 # Build the application
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o hello-world .
 
-# Runtime stage - using outdated alpine:3.12 (released May 2020)
-FROM alpine:3.12
+# Runtime stage - using current Alpine
+FROM alpine:3.21
 
 # Install ca-certificates for HTTPS
 RUN apk --no-cache add ca-certificates
