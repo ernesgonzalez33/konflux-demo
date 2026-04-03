@@ -1,5 +1,5 @@
 # Build stage - using outdated golang:1.15 (released August 2020)
-FROM golang:1.15-alpine3.12 AS builder
+FROM golang:1.16-alpine3.12 AS builder
 
 WORKDIR /app
 
